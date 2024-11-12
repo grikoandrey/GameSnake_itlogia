@@ -33,7 +33,28 @@ export class Snake {
             } else if (event.key === 'ArrowDown' && this.currentDirection !== 'up') {
                 this.currentDirection = 'down';
             }
-        })
+        });
+        // Обработка кликов по кнопкам
+        document.getElementById('left').addEventListener('click', () => {
+            if (this.currentDirection !== 'right') {
+                this.currentDirection = 'left';
+            }
+        });
+        document.getElementById('right').addEventListener('click', () => {
+            if (this.currentDirection !== 'left') {
+                this.currentDirection = 'right';
+            }
+        });
+        document.getElementById('up').addEventListener('click', () => {
+            if (this.currentDirection !== 'down') {
+                this.currentDirection = 'up';
+            }
+        });
+        document.getElementById('down').addEventListener('click', () => {
+            if (this.currentDirection !== 'up') {
+                this.currentDirection = 'down';
+            }
+        });
     }
 
 

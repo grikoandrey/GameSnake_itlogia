@@ -21,6 +21,9 @@ export class Game {
         document.getElementById('start').onclick = () => {
             this.startGame();
         }
+        document.getElementById('start-mob').onclick = () => {
+            this.startGame();
+        }
 
     }
 
@@ -33,14 +36,14 @@ export class Game {
         this.snake = new Snake(this.context, this.positionCount, this.positionSize);
         this.food.setNewFoodPosition();
 
-        this.interval = setInterval((this.gameProcess.bind(this)), 100)
+        this.interval = setInterval((this.gameProcess.bind(this)), 150)
     }
 
     gameProcess() {
         this.context.clearRect(0, 0, this.positionSize * this.positionCount,
             this.positionCount * this.positionSize);
 
-        this.showGrid();
+        // this.showGrid();
         this.food.showFood();
         let result = this.snake.showSnake(this.food.foodPosition);
         if (result.collision) {
@@ -61,7 +64,8 @@ export class Game {
         this.food = null;
 
         this.context.fillStyle = 'red';
-        this.context.font = 'bold 48px Arial';
+        const fontSize = window.innerWidth < 480 ? 30 : 48
+        this.context.font = `bold ${fontSize}px Arial`;
         this.context.textAlign = 'center';
         this.context.fillText(`Your score: ${this.score}`,
             (this.positionSize * this.positionCount) / 2,
